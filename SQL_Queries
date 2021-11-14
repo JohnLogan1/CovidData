@@ -1,0 +1,16 @@
+--Querying the data to make sure it was uploaded correctly:
+
+SELECT *
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+ORDER BY 3,4
+
+SELECT *
+FROM `course-3-week-3-327122.Covid_Project.CovidVaccinations`
+ORDER BY 3,4
+
+--Select data that we are going to be using:
+
+SELECT location, date, total_cases, new_cases, total_deaths, population
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+
+
