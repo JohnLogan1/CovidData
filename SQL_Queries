@@ -29,7 +29,7 @@ SELECT location, date, total_cases, total_deaths, (total_deaths/total_cases)*100
 FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
 WHERE location = 'United States'
 ORDER BY total_cases DESC
---This query above shows that as of 11/3/2021, the total cases are 47,050,502, total deaths are 762,972, and DeathPercentage is 1.6216022519802233 %
+--This query above shows that as of 11/3/2021, the total cases are 47,050,502, total deaths are 762,972, and DeathPercentage is 1.6216022519802233 % in the USA
 
 
 
