@@ -14,7 +14,7 @@ SELECT location, date, total_cases, new_cases, total_deaths, population
 FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
 ORDER BY 1,2
 
---Looking at Total_Cases vs Total_Deaths, and calculating the percentage of those that die from COVID:
+--Looking at Total_Cases vs Total_Deaths, and calculating the likelihood of dying if you contract COVID in your country:
 
 SELECT location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 AS DeathPercentage
 FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
@@ -29,7 +29,25 @@ SELECT location, date, total_cases, total_deaths, (total_deaths/total_cases)*100
 FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
 WHERE location = 'United States'
 ORDER BY total_cases DESC
---This query above shows that as of 11/3/2021, the total cases are 47,050,502, total deaths are 762,972, and DeathPercentage is 1.6216022519802233 % in the USA
+--This query above shows that as of 11/13/2021, the total cases is 47,050,502, total deaths is 762,972, and DeathPercentage is 1.6216022519802233 % in the USA
+
+--Looking at Total Cases vs Population:
+--Shows what percentage of the population has gotten COVID:
+
+SELECT location, date, population, total_cases,(total_cases/population)*100 AS CasesPercentage
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+WHERE location = 'United States'
+ORDER BY 1,2
+
+SELECT location, date, population, total_cases,(total_cases/population)*100 AS CasesPercentage
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+WHERE location = 'United States'
+ORDER BY date DESC
+--This query above shows that as of 11/13/2021, the population is 332,915,074, total cases is 47,050,502, and CasesPercentage is 14.132884232211126 % in the USA
+
+
+
+
 
 
 
