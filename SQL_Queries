@@ -12,5 +12,12 @@ ORDER BY 3,4
 
 SELECT location, date, total_cases, new_cases, total_deaths, population
 FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+ORDER BY 1,2
+
+--Looking at Total_Cases vs Total_Deaths, and calculating the percentage of those that die from COVID:
+SELECT location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 AS DeathPercentage
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+ORDER BY 1,2
+
 
 
