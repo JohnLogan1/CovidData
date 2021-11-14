@@ -44,6 +44,13 @@ FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
 WHERE location = 'United States'
 ORDER BY date DESC
 --This query above shows that as of 11/13/2021, the population is 332,915,074, total cases is 47,050,502, and CasesPercentage is 14.132884232211126 % in the USA
+--In other words, roughly 14% of the population of the USA has gotten COVID so far
+
+--Looking at countries with the highest infection rate compared to population:
+SELECT location, population, MAX(total_cases) AS HighestInfectionCount,(MAX(total_cases)/population)*100 AS PercentPopulationInfected
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+GROUP BY location, population
+ORDER BY PercentPopulationInfected DESC
 
 
 
