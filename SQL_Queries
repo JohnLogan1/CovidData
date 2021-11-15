@@ -64,6 +64,14 @@ FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
 WHERE continent is not null
 GROUP BY location, population
 ORDER BY HighestDeathCount DESC
+--This query shows that the United States is the leader when it comes to the death count, at 762,972
+
+SELECT location, population, MAX(cast(total_cases as INT)) AS HighestInfectionCount
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+WHERE continent is not null
+GROUP BY location, population
+ORDER BY HighestInfectionCount DESC
+--This query shows that the United States is also the leader when it comes to the total number of cases, at 47,050,502
 
 
 
