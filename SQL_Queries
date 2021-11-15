@@ -52,8 +52,18 @@ FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
 GROUP BY location, population
 ORDER BY PercentPopulationInfected DESC
 
+--Showing countries with the highest death count compared to population:
+SELECT location, population, MAX(cast(total_deaths as INT)) AS HighestDeathCount,(MAX(total_deaths)/population)*100 AS PercentPopulationDead
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+WHERE continent is not null
+GROUP BY location, population
+ORDER BY PercentPopulationDead DESC
 
-
+SELECT location, population, MAX(cast(total_deaths as INT)) AS HighestDeathCount
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+WHERE continent is not null
+GROUP BY location, population
+ORDER BY HighestDeathCount DESC
 
 
 
