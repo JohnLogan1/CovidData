@@ -73,6 +73,29 @@ GROUP BY location, population
 ORDER BY HighestInfectionCount DESC
 --This query shows that the United States is also the leader when it comes to the total number of cases, at 47,050,502
 
+--Breaking it down by continent:
+--Showing continents with the highest death count per population:
+SELECT continent, MAX(cast(total_deaths as INT)) AS HighestDeathCount
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+WHERE continent is not null
+GROUP BY location, population
+ORDER BY HighestDeathCount DESC
+--This query shows that North America (762972) is in the lead, followed by South America (611222), Asia (463530), Europe (249415), Africa (89746), Oceania(1882)
+
+
+--Global Data:
+SELECT date, SUM(new_cases) AS global_cases, SUM(cast(new_deaths as int)) AS global_deaths, SUM(cast(new_deaths as int))/SUM(new_cases)*100 AS GlobalDeathPercentage
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+WHERE continent is not null
+GROUP BY date
+ORDER BY 1,2
+--This query above shows the new cases, new deaths, and death percentage for each date on a global scale
+
+SELECT SUM(new_cases) AS global_cases, SUM(cast(new_deaths as int)) AS global_deaths, SUM(cast(new_deaths as int))/SUM(new_cases)*100 AS GlobalDeathPercentage
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+WHERE continent is not null
+ORDER BY 1,2
+--This query above shows that the total global cases are 252343978, total global deaths are 5078907, and global death percentage is 2.012691977139237 %
 
 
 
