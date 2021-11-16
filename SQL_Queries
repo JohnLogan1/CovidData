@@ -1,3 +1,5 @@
+--SQL Queries performed using Google Cloud BigQuery
+
 --Querying the data to make sure it was uploaded correctly:
 
 SELECT *
