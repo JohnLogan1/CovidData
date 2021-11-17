@@ -99,6 +99,20 @@ WHERE continent is not null
 ORDER BY 1,2
 --This query above shows that the total global cases are 252343978, total global deaths are 5078907, and global death percentage is 2.012691977139237 %
 
+--Joining covid_deaths and covid_vaccination tables together
+--BigQuery wouldn't let me do join functions without upgrading my membership, so I wasn't able to run these:
+SELECT *
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+JOIN `course-3-week-3-327122.Covid_Project.CovidVaccinations`
+    ON CovidDeaths.location = CovidVaccinations.location
+    AND CovidDeaths.date = CovidVaccinations.date
+    
+SELECT location, date, new_vaccinations, SUM(cast(new_vaccinations as INT)) OVER (partition by location ORDER BY date)
+FROM `course-3-week-3-327122.Covid_Project.CovidVaccinations`
+WHERE continent is not null
+ORDER BY 1,2
+--Finding the amount of new vaccinations per day in each country, with a column to sum up the number of new vaccinations by location and ordered by the date
+
 
 
 
