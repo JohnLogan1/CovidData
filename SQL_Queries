@@ -114,7 +114,26 @@ ORDER BY 1,2
 --Finding the amount of new vaccinations per day in each country, with a column to sum up the number of new vaccinations by location and ordered by the date
 
 
---Create new table for Percent of population vaccinated? Adding population to vaccinated table
+--Had to go back and create a new table in Excel to add the population column to the CovidVaccinations table, since BigQuery would not let me do JOIN commands without 
+--getting a membership. This new table was titled "CovidVaccinations_Population"
+
+--Finding the percent of the population that is vaccinated:
+SELECT continent, location, date, population, new_vaccinations, SUM(CAST(new_vaccinations AS int)) 
+    OVER (PARTITION BY location ORDER BY location, date) AS RollingPeopleVaccinated, (RollingPeopleVaccinated/Population)*100 as PercentofPopVaccinated
+FROM `course-3-week-3-327122.Covid_Project.CovidVaccinations_Population`
+WHERE continent is not null
+--This query created a rolling count for people who are vaccinated by location and country
+--This query was then created as a view, titled "PercentPopulationVaccinated"
+
+SELECT continent, location, date, population, new_vaccinations, SUM(CAST(new_vaccinations AS int)) 
+    OVER (PARTITION BY location ORDER BY location, date) AS RollingPeopleVaccinated, (RollingPeopleVaccinated/Population)*100 as PercentPopVaccinated
+FROM `course-3-week-3-327122.Covid_Project.PercentPopulationVaccinated`
+WHERE continent is not null
+--Shows the percentage of the population vaccinated by location and date
+
+
+
+
 
 
 
