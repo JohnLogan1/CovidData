@@ -134,6 +134,48 @@ WHERE continent is not null
 
 
 
+--Tableau project:
+
+-- 1. 
+
+--Global Data:
+SELECT SUM(new_cases) AS global_cases, SUM(cast(new_deaths as int)) AS global_deaths, SUM(cast(new_deaths as int))/SUM(new_cases)*100 AS GlobalDeathPercentage
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+WHERE continent is not null
+ORDER BY 1,2
+--This query shows the new cases, new deaths, and death percentage for each date on a global scale
+
+
+
+-- 2. 
+
+Select location, SUM(cast(new_deaths as int)) as global_deaths
+From `course-3-week-3-327122.Covid_Project.CovidDeaths`
+Where continent is null 
+and location not in ('World', 'European Union', 'International')
+Group by location
+Order by global_deaths desc
+
+
+-- 3.
+
+
+--Looking at countries with the highest infection rate compared to population:
+SELECT location, population, MAX(total_cases) AS HighestInfectionCount,(MAX(total_cases)/population)*100 AS PercentPopulationInfected
+FROM `course-3-week-3-327122.Covid_Project.CovidDeaths`
+GROUP BY location, population
+ORDER BY PercentPopulationInfected DESC
+
+-- 4.
+
+
+Select location, population,date, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
+From `course-3-week-3-327122.Covid_Project.CovidDeaths`
+Group by location, population, date
+order by PercentPopulationInfected desc
+
+
+
 
 
 
