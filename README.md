@@ -4,7 +4,7 @@ Completed alongside data analyst professional Alex Freberg (https://www.youtube.
 
 -Created SQL queries showcasing significant findings in regards to COVID
 
--Learned how to do PARTITION BY
+-Learned how to do PARTITION BY and OVER clauses
 
 -Got to practice writing some of my own queries
 
